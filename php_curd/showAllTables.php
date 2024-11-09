@@ -37,29 +37,36 @@
 
                         //***************************** */
                         // Example Query 3
-                        $sql13 = "SELECT * FROM courses"; //Query
-                        $queryTitle1 = "Course Posts Table";
-                        $queryDescription1 = "Show All Course Posts Table Records";
+                        $sql3 = "SELECT * FROM courses"; //Query
+                        $queryTitle3 = "Course Posts Table";
+                        $queryDescription3 = "Show All Course Posts Table Records";
                         //CALL FUNCTION to generate table
-                        generate_table($conn, $sql1, $queryTitle1, $queryDescription1);
+                        generate_table($conn, $sql3, $queryTitle3, $queryDescription3);
 
                         //***************************** */
                         // Example Query 4
                         $sql4 = "SELECT * FROM Exams"; //Query
-                        $queryTitle2 = "Exams Table";
-                        $queryDescription2 = "Show All Exams Table Records";
+                        $queryTitle4 = "Exams Table";
+                        $queryDescription4 = "Show All Exams Table Records";
 
                         //CALL FUNCTION to generate table
-                        generate_table($conn, $sql2, $queryTitle2, $queryDescription2);
+                        generate_table($conn, $sql4, $queryTitle4, $queryDescription4);
 
                         //***************************** */
                         // Example Query 5
                         $sql5 = "SELECT * FROM Performance"; //Query
-                        $queryTitle2 = "Performance Table";
-                        $queryDescription2 = "Show All Performance Table Records";
+                        $queryTitle5 = "Performance Table";
+                        $queryDescription5 = "Show All Performance Table Records";
 
                         //CALL FUNCTION to generate table
-                        generate_table($conn, $sql2, $queryTitle2, $queryDescription2);
+                        generate_table($conn, $sql5, $queryTitle5, $queryDescription5);
+
+                        $sql6 = "SELECT * FROM appointment"; //Query
+                        $queryTitle6 = "Appointment Table";
+                        $queryDescription6 = "Show All Appointment Table Records";
+
+                        //CALL FUNCTION to generate table
+                        generate_table($conn, $sql6, $queryTitle6, $queryDescription6);
 
                         // Add more queries as needed...
                         ?>
