@@ -37,7 +37,7 @@
 
                         //***************************** */
                         // Example Query 3
-                        $sql1 = "SELECT * FROM courses"; //Query
+                        $sql13 = "SELECT * FROM courses"; //Query
                         $queryTitle1 = "Course Posts Table";
                         $queryDescription1 = "Show All Course Posts Table Records";
                         //CALL FUNCTION to generate table
@@ -45,18 +45,16 @@
 
                         //***************************** */
                         // Example Query 4
-                        $sql2 = "SELECT * FROM Exams"; //Query
+                        $sql4 = "SELECT * FROM Exams"; //Query
                         $queryTitle2 = "Exams Table";
                         $queryDescription2 = "Show All Exams Table Records";
 
                         //CALL FUNCTION to generate table
                         generate_table($conn, $sql2, $queryTitle2, $queryDescription2);
 
-                        
-
                         //***************************** */
                         // Example Query 5
-                        $sql2 = "SELECT * FROM Performance"; //Query
+                        $sql5 = "SELECT * FROM Performance"; //Query
                         $queryTitle2 = "Performance Table";
                         $queryDescription2 = "Show All Performance Table Records";
 
