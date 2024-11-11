@@ -94,7 +94,7 @@
                         generate_table($conn, $sql9, $queryTitle9, $queryDescription9);
 
                         // Example Query 10
-                        $sql10 = "SELECT * FROM class_time_notifications"; //Query
+                        $sql10 = "SELECT * FROM class_time_notification"; //Query
                         $queryTitle10 = "Class time notifications Table";
                         $queryDescription10 = "Show All class time notifications Table Records";
 
