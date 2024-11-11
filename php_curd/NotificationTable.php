@@ -12,8 +12,8 @@
                    
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Posts Tables</h1>
-                    <p class="mb-4">Query: Show All Posts Table Records.
+                    <h1 class="h3 mb-2 text-gray-800">Class Time Notification Tables</h1>
+                    <p class="mb-4">Query: Show All Class Time Notification Table Records.
                         </p>
 
                     <!-- COPY FROM HERE -->
@@ -21,25 +21,24 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Posts Table</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Class Time Notification Table</h6>
                         </div>
                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                         <tr>
-                                            <th>PostID</th>
-                                            <th>UserID</th>
-                                            <th>PostText</th>
-                                            <th>Image URL</th>
-                                            <th>Video URL</th>
-                                            <th>Post Date</th>
-                                            <th>Hashtag ID</th>
+                                            <th>NotificationID</th>
+                                            <th>CourseID</th>
+                                            <th>NotificationName</th>
+                                            <th>NotificationDetails</th>
+                                            <th>TimeOfNextClass</th>
+                                            <th>DateOfNextClass</th>   
                                         </tr>
                                     </thead>
                                     <tbody>
                                 <?php /// Read data
-                                    $sql = "SELECT * FROM Posts"; //Query
+                                    $sql = "SELECT * FROM class_time_notification"; //Query
                                     //Execute the Query
                                     $result = mysqli_query($conn, $sql);
                                     echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -47,18 +46,16 @@
                                     if (mysqli_num_rows($result) > 0) {
                                     // output data of each row
                                     while($row = mysqli_fetch_assoc($result)) {
-                                        //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
                                        
                                         echo "<tr>";
-                                                    echo "<td>".$row["PostID"]  ."</td>";
-                                                    echo "<td>".$row["UserID"]  ."</td>";
-                                                    echo    "<td>".$row['PostText']. "</td>";
-                                                    echo   "<td>".$row['ImageURL']. "</td>";
-                                                    echo   "<td>".$row['VideoURL']. "</td>";
-                                                    echo   "<td>".$row['PostDate']. "</td>";
-                                                    echo   "<td>".$row['HashtagID']. "</td>";
+                                                    echo "<td>".$row["notificationID"]  ."</td>";
+                                                    echo    "<td>".$row['courseID']. "</td>";
+                                                    echo "<td>".$row["notificationName"]  ."</td>";
+                                                    echo    "<td>".$row['notificationDetail']. "</td>";
+                                                    echo    "<td>".$row['timeOfNextClass']. "</td>";
+                                                    echo    "<td>".$row['dateofNextClass']. "</td>";
                                                     echo "</tr>";
-                                        //echo $row["count(*)"];
+                                       
                                     }
                                     } else {
                                     echo "0 results";

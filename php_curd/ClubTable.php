@@ -12,8 +12,8 @@
                    
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">User Tables</h1>
-                    <p class="mb-4">Query: Show All User Table Records.
+                    <h1 class="h3 mb-2 text-gray-800">Student Club Tables</h1>
+                    <p class="mb-4">Query: Show All Student Club Table Records.
                         </p>
 
                     <!-- COPY FROM HERE -->
@@ -21,19 +21,19 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">User Table</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Student Club Table</h6>
                         </div>
                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                          <tr>
-                                            <th>UserID</th>
-                                            <th>FisrtName</th>
-                                            <th>LastName</th>
-                                            <th>Email</th>
-                                            <th>BirthDate</th>
-                                            <th>Gender</th>
+                                            <th>StudentClubID</th>
+                                            <th>StudentClubName</th>
+                                            <th>StudentID</th>
+                                            <th>TeacherID</th>
+                                            <th>StudentClubDescription</th>
+
                                         </tr>
                                         
                                     </thead>
@@ -51,7 +51,7 @@
 
                                             
 
-                                                $sql = "SELECT * FROM User"; //Query
+                                                $sql = "SELECT * FROM student_club"; //Query
                                                 //Execute the Query
                                                 $result = mysqli_query($conn, $sql);
                                                 echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -61,12 +61,12 @@
                                                 while($row = mysqli_fetch_assoc($result)) {
                                                     
                                                     echo "<tr>";
-                                                    echo "<td>".$row["UserID"]  ."</td>";
-                                                    echo    "<td>".$row['FirstName']. "</td>";
-                                                    echo   "<td>".$row['LastName']. "</td>";
-                                                    echo   "<td>".$row['Email']. "</td>";
-                                                    echo   "<td>".$row['BirthDate']. "</td>";
-                                                    echo   "<td>".$row['Gender']. "</td>";
+                                                    echo "<td>".$row["studentClubID"]  ."</td>";
+                                                    echo    "<td>".$row['studentClubName']. "</td>";
+                                                    echo   "<td>".$row['studentID']. "</td>";
+                                                    echo   "<td>".$row['teacherID']. "</td>";
+                                                    echo   "<td>".$row['studentClubDesc']. "</td>";
+
                                                     echo "</tr>";
                                                     //echo $row["count(*)"];
                                                 }

@@ -67,11 +67,21 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="UserTable.php">User Table</a>
-                        <a class="collapse-item" href="PostsTable.php">Posts Table</a>
-                        <a class="collapse-item" href="HashtagTable.php">HashTag Table</a>
-                        <a class="collapse-item" href="MentionsTable.php">Mentions Table</a>
-                        <a class="collapse-item" href="UserPostTable.php">User Post Table</a>
+                        <a class="collapse-item" href="AnnouncementTable.php">Announcement Table</a>
+                        <a class="collapse-item" href="AppointmentTable.php">Appointment Table</a>
+                        <a class="collapse-item" href="AssignmentTable.php">Assignment Table</a>
+                        <a class="collapse-item" href="CertificateTable.php">Certificates Table</a>
+                        <a class="collapse-item" href="NotificationTable.php">Notification Table</a>
+                        <a class="collapse-item" href="CourseTable.php">Courses Table</a>
+                        <a class="collapse-item" href="ExamTable.php">Exams Table</a>
+                        <a class="collapse-item" href="ActivityTable.php">Extra activity Table</a>
+                        <a class="collapse-item" href="PerformanceTable.php">Performance Table</a>
+                        <a class="collapse-item" href="StudentTable.php">Students Table</a>
+                        <a class="collapse-item" href="ClubTable.php">Student Club Table</a>
+                        <a class="collapse-item" href="TeacherTable.php">Teachers Table</a>
+                        <a class="collapse-item" href="TranscriptTable.php">Transcripts Table</a>
+                        <a class="collapse-item" href="WorkshopTable.php">Workshops Table</a>
+
 
                     </div>
                 </div>

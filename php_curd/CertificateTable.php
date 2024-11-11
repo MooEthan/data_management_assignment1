@@ -12,8 +12,8 @@
                    
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Mentions Tables</h1>
-                    <p class="mb-4">Query: Show All Mentions Table Records.
+                    <h1 class="h3 mb-2 text-gray-800">Certificate Tables</h1>
+                    <p class="mb-4">Query: Show All Certificate Table Records.
                         </p>
 
                     <!-- COPY FROM HERE -->
@@ -21,23 +21,24 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Mentions  Table</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Certificate Table</h6>
                         </div>
                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                         <tr>
-                                            <th>MentionID</th>
-                                            <th>UserID</th>
-                                            <th>PostID</th>
-                                            
-                                            
+                                            <th>CertificateID</th>
+                                            <th>StudentID</th>
+                                            <th>CourseID</th>
+                                            <th>Certificate Image</th>
+
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
                                 <?php /// Read data
-                                    $sql = "SELECT * FROM Mentions"; //Query
+                                    $sql = "SELECT * FROM certificates"; //Query
                                     //Execute the Query
                                     $result = mysqli_query($conn, $sql);
                                     echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -45,14 +46,14 @@
                                     if (mysqli_num_rows($result) > 0) {
                                     // output data of each row
                                     while($row = mysqli_fetch_assoc($result)) {
-                                        
+                                       
                                         echo "<tr>";
-                                        echo "<td>".$row["MentionID"]  ."</td>";
-                                        echo "<td>".$row["UserID"]  ."</td>";
-                                        echo "<td>".$row['PostID']. "</td>";
-                                                    
-                                        echo "</tr>";
-                                        
+                                                    echo "<td>".$row["certificateID"]  ."</td>";
+                                                    echo "<td>".$row["studentID"]  ."</td>";
+                                                    echo    "<td>".$row['courseID']. "</td>";
+                                                    echo    "<td>".$row['cert_image']. "</td>";
+                                                    echo "</tr>";
+                                       
                                     }
                                     } else {
                                     echo "0 results";
