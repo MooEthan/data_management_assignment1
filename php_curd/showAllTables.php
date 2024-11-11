@@ -61,6 +61,7 @@
                         //CALL FUNCTION to generate table
                         generate_table($conn, $sql5, $queryTitle5, $queryDescription5);
 
+                        // Example Query 6
                         $sql6 = "SELECT * FROM appointment"; //Query
                         $queryTitle6 = "Appointment Table";
                         $queryDescription6 = "Show All Appointment Table Records";
@@ -68,14 +69,73 @@
                         //CALL FUNCTION to generate table
                         generate_table($conn, $sql6, $queryTitle6, $queryDescription6);
 
+                        // Example Query 7
+                        $sql7 = "SELECT * FROM announcement"; //Query
+                        $queryTitle7 = "Announcement Table";
+                        $queryDescription7 = "Show All Announcement Table Records";
+
+                        //CALL FUNCTION to generate table
+                        generate_table($conn, $sql7, $queryTitle7, $queryDescription7);
+
+                        // Example Query 8
+                        $sql8 = "SELECT * FROM assignment"; //Query
+                        $queryTitle8 = "Assignment Table";
+                        $queryDescription8 = "Show All Assignment Table Records";
+
+                        //CALL FUNCTION to generate table
+                        generate_table($conn, $sql8, $queryTitle8, $queryDescription8);
+
+                        // Example Query 9
+                        $sql9 = "SELECT * FROM certificates"; //Query
+                        $queryTitle9 = "Certificates Table";
+                        $queryDescription9 = "Show All Certificates Table Records";
+
+                        //CALL FUNCTION to generate table
+                        generate_table($conn, $sql9, $queryTitle9, $queryDescription9);
+
+                        // Example Query 10
+                        $sql10 = "SELECT * FROM class_time_notifications"; //Query
+                        $queryTitle10 = "Class time notifications Table";
+                        $queryDescription10 = "Show All class time notifications Table Records";
+
+                        //CALL FUNCTION to generate table
+                        generate_table($conn, $sql10, $queryTitle10, $queryDescription10);
+
+                        // Example Query 11
+                        $sql11 = "SELECT * FROM extra_activity"; //Query
+                        $queryTitle11 = "Extra activity Table";
+                        $queryDescription11 = "Show All extra activity Table Records";
+
+                        //CALL FUNCTION to generate table
+                        generate_table($conn, $sql11, $queryTitle11, $queryDescription11);
+
+                        // Example Query 12
+                        $sql12 = "SELECT * FROM student_club"; //Query
+                        $queryTitle12 = "Student club Table";
+                        $queryDescription12 = "Show All student club Table Records";
+
+                        //CALL FUNCTION to generate table
+                        generate_table($conn, $sql12, $queryTitle12, $queryDescription12);
+
+                        // Example Query 13
+                        $sql13 = "SELECT * FROM transcripts"; //Query
+                        $queryTitle13 = "Transcripts Table";
+                        $queryDescription13 = "Show All transcript Table Records";
+
+                        //CALL FUNCTION to generate table
+                        generate_table($conn, $sql13, $queryTitle13, $queryDescription13);
+                        
+                        // Example Query 14
+                        $sql14 = "SELECT * FROM workshop"; //Query
+                        $queryTitle14 = "Workshop Table";
+                        $queryDescription14 = "Show All workshop Table Records";
+
+                        //CALL FUNCTION to generate table
+                        generate_table($conn, $sql14, $queryTitle14, $queryDescription14);
+
+
                         // Add more queries as needed...
-                        ?>
-
-
-                   
-                    
-
-                    
+                        ?>   
                 </div> 
                 <!-- /.container-fluid -->
 
