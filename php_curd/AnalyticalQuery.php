@@ -20,7 +20,7 @@
                         <?php
                         //***************************** */
                         // Example Query 1
-                        $sql1 = "SELECT * FROM class_time_notification WHERE notificationID IN (SELECT notificationID FROM class_time_notification WHERE notificationName LIKE '%class%') ";
+                        $sql1 = "SELECT n.notificationID, c.courseName, n.notificationName, n.notificationDetail, n.timeOfNextClass, n.dateOfNextClass FROM class_time_notification n JOIN courses c ON n.courseID = c.courseID WHERE notificationID IN (SELECT notificationID FROM class_time_notification WHERE notificationName LIKE '%class%') ";
                         $queryTitle1 = "Query-1";
                         $queryDescription1 = "Retrieve notifications with class written in the name of the notification ";
                         //CALL FUNCTION to generate table
@@ -73,7 +73,13 @@
 
                         //***************************** */
                         // Example Query 7
-                        $sql7 = "SELECT appointmentID, studentID, teacherID, status FROM appointment WHERE status = '2' ";
+                        $sql7 = "SELECT a.appointmentID, s.studentName, t.teacherName, 
+                        CASE
+                        WHEN a.status = 0 THEN 'Pending'
+                        WHEN a.status = 1 THEN 'Approved'
+                        WHEN a.status = 2 THEN 'Rejected'
+                        END AS status
+                        ,purpose FROM appointment a JOIN student s ON a.studentID = s.studentID JOIN teacher t ON a.teacherID = t.teacherID WHERE a.status = '2' ";
                         $queryTitle7 = "Query-7";
                         $queryDescription7 = "Choose all appointment which has been rejected ";
 
@@ -118,7 +124,7 @@
 
                          //***************************** */
                          // Example Query 12
-                         $sql12 = "SELECT examID, studentID, exam_datetime FROM exams WHERE exam_datetime BETWEEN '2024-12-01' AND '2024-12-31' ORDER BY examID ";
+                         $sql12 = "SELECT e.examID, s.studentName, e.exam_datetime FROM exams e JOIN student s ON e.studentID = s.studentID WHERE e.exam_datetime BETWEEN '2024-12-01' AND '2024-12-31' ORDER BY e.examID ";
                          $queryTitle12 = "Query-12";
                          $queryDescription12 = "Check all the exams and student involving it that took place in December 2024 ";
  
@@ -136,7 +142,7 @@
 
                          //***************************** */
                          // Example Query 14
-                         $sql14 = "SELECT examID FROM exams WHERE status = 1 AND exam_datetime BETWEEN NOW() AND NOW() + INTERVAL 1 WEEK; ";
+                         $sql14 = "SELECT e.examID, c.courseName, e.exam_datetime FROM exams e JOIN courses c ON e.courseID = c.courseID WHERE e.status = 1 AND e.exam_datetime BETWEEN NOW() AND NOW() + INTERVAL 1 WEEK ORDER BY examID ASC; ";
                          $queryTitle14= "Query-14";
                          $queryDescription14 = "Select all the upcoming exams within a week ";
  
@@ -181,7 +187,12 @@
 
                          //***************************** */
                          // Example Query 19
-                         $sql19 = "SELECT studentID, studentName, status FROM student WHERE status = 1 ORDER BY studentID ";
+                         $sql19 = "SELECT studentID, studentName, 
+                         CASE
+                         WHEN status = 0 THEN 'Active'
+                         WHEN status = 1 THEN 'Inactive'
+                         END AS status
+                         FROM student WHERE status = 1 ORDER BY studentID ";
                          $queryTitle19 = "Query-19";
                          $queryDescription19 = "Select all inactive student ";
  
@@ -190,7 +201,13 @@
 
                          //***************************** */
                          // Example Query 20
-                         $sql20 = "SELECT s.studentID, s.studentName, a.submission FROM assignment a JOIN student s ON s.studentID = a.studentID WHERE submission = '3' ORDER BY studentID ";
+                         $sql20 = "SELECT s.studentID, s.studentName, 
+                         CASE 
+                         WHEN a.submission = 1 THEN 'Pending'
+                         WHEN a.submission = 2 THEN 'Received'
+                         WHEN a.submission = 3 THEN 'overdue'
+                         END AS submission
+                         FROM assignment a JOIN student s ON s.studentID = a.studentID WHERE submission = '3' ORDER BY studentID ";
                          $queryTitle20 = "Query-20";
                          $queryDescription20 = "Select all student where they failed to submit the assignment in given time ";
  

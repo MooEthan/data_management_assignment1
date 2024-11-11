@@ -169,7 +169,8 @@
                         generate_table($conn, $sql13, $queryTitle13, $queryDescription13);
                         
                         // Example Query 14
-                        $sql14 = "SELECT w.workshopID, w.workshopName, w.workshop_desc, sc.studentClubName, w.workshopDate, w.workshopTime, t.teacherName, s.studentName,CASE 
+                        $sql14 = "SELECT w.workshopID, w.workshopName, w.workshop_desc, sc.studentClubName, w.workshopDate, w.workshopTime, t.teacherName, s.studentName,
+                        CASE 
                         WHEN w.status = 1 THEN 'Approved'
                         WHEN w.status = 2 THEN 'Rejected'
                         END AS status
