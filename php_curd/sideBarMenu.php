@@ -216,7 +216,7 @@
                         </div>
                         
                     </form>
-                    <h4>  Data Management Coursework Title</h4>
+                    <h4> University Student Portal </h4>
                     
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
