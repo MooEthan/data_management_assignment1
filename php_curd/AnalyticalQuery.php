@@ -37,7 +37,7 @@
 
                         //***************************** */
                         // Example Query 3
-                        $sql3 = "SELECT s.studentClubID, COUNT(w.workshopID) AS WorkshopsLastMonth FROM student_club s, workshop w WHERE s.studentClubID = w.studentClubID AND w.created_date >= DATE_SUB(NOW(), INTERVAL 1 MONTH) GROUP BY s.studentClubID; ";
+                        $sql3 = "SELECT s.studentClubName, COUNT(w.workshopID) AS WorkshopsLastMonth FROM student_club s, workshop w WHERE s.studentClubID = w.studentClubID AND w.created_date >= DATE_SUB(NOW(), INTERVAL 1 MONTH) GROUP BY s.studentClubID; ";
                         $queryTitle3 = "Query-3";
                         $queryDescription3 = "Counts the number of workshops created by a student club during last month ";
 
