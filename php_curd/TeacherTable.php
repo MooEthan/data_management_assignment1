@@ -30,7 +30,7 @@
                                          <tr>
                                             <th>TeacherID</th>
                                             <th>TeacherName</th>
-                                            <th>CourseID</th>
+                                            <th>CourseName</th>
                                             <th>Gender</th>
                                             <th>email</th>
                                             <th>Password</th>
@@ -58,8 +58,15 @@
 
                                             
 
-                                                $sql = "SELECT * FROM teacher"; //Query
-                                                //Execute the Query
+                                                $sql = "SELECT t.teacherID, t.teacherName, c.courseName, t.gender, t.email, t.password, t.CellNumber, t.nationality, t.position, t.dob, t.address,
+                                                CASE
+                                                WHEN t.status = 0 THEN 'Active'
+                                                WHEN t.status = 1 THEN 'Inactive'
+                                                END AS status
+                                                FROM teacher t JOIN courses c ON t.courseID = c.courseID"; //Query
+                                                $queryTitle2 = "Teacher Table";
+                                                $queryDescription2 = "Show All Teacher Table Records"; //Query
+                                                 //Execute the Query
                                                 $result = mysqli_query($conn, $sql);
                                                 echo "<br> Total Rows: " . mysqli_num_rows($result);
 
@@ -70,11 +77,11 @@
                                                     echo "<tr>";
                                                     echo "<td>".$row["teacherID"]  ."</td>";
                                                     echo    "<td>".$row['teacherName']. "</td>";
-                                                    echo   "<td>".$row['courseID']. "</td>";
+                                                    echo   "<td>".$row['courseName']. "</td>";
                                                     echo   "<td>".$row['gender']. "</td>";
                                                     echo   "<td>".$row['email']. "</td>";
                                                     echo   "<td>".$row['password']. "</td>";
-                                                    echo   "<td>".$row['cellNumber']. "</td>";
+                                                    echo   "<td>".$row['CellNumber']. "</td>";
                                                     echo   "<td>".$row['nationality']. "</td>";
                                                     echo   "<td>".$row['status']. "</td>";
                                                     echo   "<td>".$row['position']. "</td>";

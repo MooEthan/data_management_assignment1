@@ -39,7 +39,7 @@
                                     </thead>
                                     <tbody>
                                 <?php /// Read data
-                                    $sql = "SELECT * FROM courses"; //Query
+                                    $sql = "SELECT c.courseID, c.courseName, c.Desc, c.creditHours, c.CourseCode, c.year, t.teacherName FROM courses c JOIN teacher t on c.teacherID = t.teacherID"; //Query
                                     //Execute the Query
                                     $result = mysqli_query($conn, $sql);
                                     echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -54,8 +54,8 @@
                                                     echo "<td>".$row["Desc"]  ."</td>";
                                                     echo    "<td>".$row['creditHours']. "</td>";
                                                     echo    "<td>".$row['CourseCode']. "</td>";
-                                                    echo    "<td>".$row['year(part)']. "</td>";
-                                                    echo "<td>".$row["teacherID"]  ."</td>";
+                                                    echo    "<td>".$row['year']. "</td>";
+                                                    echo "<td>".$row["teacherName"]  ."</td>";
                                                     echo "</tr>";
                                        
                                     }

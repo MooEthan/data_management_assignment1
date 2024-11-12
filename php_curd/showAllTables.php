@@ -25,7 +25,7 @@
                         WHEN s.status = 0 THEN 'Active' 
                         WHEN s.status = 1 THEN 'Inactive' 
                         END AS status
-                        FROM student s JOIN courses c on s.courseID = c.courseID"; //Query
+                        FROM student s JOIN courses c on s.courseID = c.courseID WHERE s.is_deleted = 0"; //Query
                         $queryTitle1 = "STUDENT Table";
                         $queryDescription1 = "Show All student Table Records";
                         //CALL FUNCTION to generate table
@@ -38,7 +38,7 @@
                         WHEN t.status = 0 THEN 'Active'
                         WHEN t.status = 1 THEN 'Inactive'
                         END AS status
-                        FROM teacher t JOIN courses c ON t.courseID = c.courseID"; //Query
+                        FROM teacher t JOIN courses c ON t.courseID = c.courseID WHERE t.is_deleted = 0"; //Query
                         $queryTitle2 = "Teacher Table";
                         $queryDescription2 = "Show All Teacher Table Records";
 
@@ -47,7 +47,7 @@
 
                         //***************************** */
                         // Example Query 3
-                        $sql3 = "SELECT c.courseID, c.courseName, c.Desc, c.creditHours, c.CourseCode, c.year, t.teacherName FROM courses c JOIN teacher t on c.teacherID = t.teacherID"; //Query
+                        $sql3 = "SELECT c.courseID, c.courseName, c.Desc, c.creditHours, c.CourseCode, c.year, t.teacherName FROM courses c JOIN teacher t on c.teacherID = t.teacherID WHERE c.is_deleted = 0"; //Query
                         $queryTitle3 = "Course Posts Table";
                         $queryDescription3 = "Show All Course Posts Table Records";
                         //CALL FUNCTION to generate table
@@ -66,7 +66,7 @@
                         WHEN e.status = 2 THEN 'Ongoing'
                         WHEN e.status = 3 THEN 'Finished'
                         END AS status
-                        FROM exams e JOIN student s ON e.studentID = s.studentID JOIN courses c ON e.courseID = c.courseID"; //Query
+                        FROM exams e JOIN student s ON e.studentID = s.studentID JOIN courses c ON e.courseID = c.courseID WHERE e.is_deleted = 0"; //Query
                         $queryTitle4 = "Exams Table";
                         $queryDescription4 = "Show All Exams Table Records";
 
@@ -75,7 +75,7 @@
 
                         //***************************** */
                         // Example Query 5
-                        $sql5 = "SELECT p.performanceID, s.studentName, c.courseName, p.overallGrades FROM performance p JOIN student s ON p.studentID = s.studentID JOIN courses c ON p.courseID = c.courseID"; //Query
+                        $sql5 = "SELECT p.performanceID, s.studentName, c.courseName, p.overallGrades FROM performance p JOIN student s ON p.studentID = s.studentID JOIN courses c ON p.courseID = c.courseID WHERE p.is_deleted = 0"; //Query
                         $queryTitle5 = "Performance Table";
                         $queryDescription5 = "Show All Performance Table Records";
 
@@ -89,7 +89,7 @@
                         WHEN a.status = 1 THEN 'Approved'
                         WHEN a.status = 2 THEN 'Rejected'
                         END AS status
-                        FROM appointment a JOIN student s ON a.studentID = s.studentID JOIN courses c ON a.courseID = c.courseID JOIN teacher t ON a.teacherID = t.teacherID"; //Query
+                        FROM appointment a JOIN student s ON a.studentID = s.studentID JOIN courses c ON a.courseID = c.courseID JOIN teacher t ON a.teacherID = t.teacherID WHERE a.is_deleted = 0"; //Query
                         $queryTitle6 = "Appointment Table";
                         $queryDescription6 = "Show All Appointment Table Records";
 
@@ -97,7 +97,7 @@
                         generate_table($conn, $sql6, $queryTitle6, $queryDescription6);
 
                         // Example Query 7
-                        $sql7 = "SELECT a.announcementID, a.announcementTitle, a.announcementDesc, t.teacherName, s.studentName FROM announcement a JOIN teacher t ON a.teacherID = t.teacherID JOIN student s ON a.studentID = s.studentID"; //Query
+                        $sql7 = "SELECT a.announcementID, a.announcementTitle, a.announcementDesc, t.teacherName, s.studentName FROM announcement a JOIN teacher t ON a.teacherID = t.teacherID JOIN student s ON a.studentID = s.studentID WHERE a.is_deleted = 0"; //Query
                         $queryTitle7 = "Announcement Table";
                         $queryDescription7 = "Show All Announcement Table Records";
 
@@ -116,7 +116,7 @@
                         WHEN a.status = 2 THEN 'Approved'
                         WHEN a.status = 3 THEN 'Rejected'
                         END AS status
-                        FROM assignment a JOIN student s ON a.studentID = s.studentID JOIN courses c ON a.courseID = c.courseID"; //Query
+                        FROM assignment a JOIN student s ON a.studentID = s.studentID JOIN courses c ON a.courseID = c.courseID WHERE a.is_deleted = 0"; //Query
                         $queryTitle8 = "Assignment Table";
                         $queryDescription8 = "Show All Assignment Table Records";
 
@@ -124,7 +124,7 @@
                         generate_table($conn, $sql8, $queryTitle8, $queryDescription8);
 
                         // Example Query 9
-                        $sql9 = "SELECT ce.certificateID, s.studentName, co.courseName, ce.cert_image FROM certificates ce JOIN student s ON ce.studentID = s.studentID JOIN courses co ON ce.courseID = co.courseID"; //Query
+                        $sql9 = "SELECT ce.certificateID, s.studentName, co.courseName, ce.cert_image FROM certificates ce JOIN student s ON ce.studentID = s.studentID JOIN courses co ON ce.courseID = co.courseID WHERE ce.is_deleted = 0"; //Query
                         $queryTitle9 = "Certificates Table";
                         $queryDescription9 = "Show All Certificates Table Records";
 
@@ -132,7 +132,7 @@
                         generate_table($conn, $sql9, $queryTitle9, $queryDescription9);
 
                         // Example Query 10
-                        $sql10 = "SELECT n.notificationID, c.courseName, n.notificationName, n.notificationDetail, n.timeOfNextClass, n.dateOfNextClass FROM class_time_notification n JOIN courses c ON n.courseID = c.courseID"; //Query
+                        $sql10 = "SELECT n.notificationID, c.courseName, n.notificationName, n.notificationDetail, n.timeOfNextClass, n.dateOfNextClass FROM class_time_notification n JOIN courses c ON n.courseID = c.courseID WHERE n.is_deleted = 0"; //Query
                         $queryTitle10 = "Class time notifications Table";
                         $queryDescription10 = "Show All class time notifications Table Records";
 
@@ -145,7 +145,7 @@
                         WHEN ex.status = 1 THEN 'Active'
                         WHEN ex.status = 2 THEN 'Inactive'
                         END AS status
-                        FROM extra_activity ex JOIN student_club s ON ex.studentClubID = s.studentClubID JOIN teacher t ON ex.teacherID = t.teacherID"; //Query
+                        FROM extra_activity ex JOIN student_club s ON ex.studentClubID = s.studentClubID JOIN teacher t ON ex.teacherID = t.teacherID WHERE ex.is_deleted = 0"; //Query
                         $queryTitle11 = "Extra activity Table";
                         $queryDescription11 = "Show All extra activity Table Records";
 
@@ -153,7 +153,7 @@
                         generate_table($conn, $sql11, $queryTitle11, $queryDescription11);
 
                         // Example Query 12
-                        $sql12 = "SELECT sc.studentClubID, sc.studentClubName, s.studentName, t.teacherName, sc.studentClubDesc FROM student_club sc JOIN student s ON sc.studentID = s.studentID JOIN teacher t ON sc.teacherID = t.teacherID"; //Query
+                        $sql12 = "SELECT sc.studentClubID, sc.studentClubName, s.studentName, t.teacherName, sc.studentClubDesc FROM student_club sc JOIN student s ON sc.studentID = s.studentID JOIN teacher t ON sc.teacherID = t.teacherID WHERE sc.is_deleted = 0"; //Query
                         $queryTitle12 = "Student club Table";
                         $queryDescription12 = "Show All student club Table Records";
 
@@ -161,7 +161,7 @@
                         generate_table($conn, $sql12, $queryTitle12, $queryDescription12);
 
                         // Example Query 13
-                        $sql13 = "SELECT t.transcriptID, s.studentName, c.courseName, t.transcript_image FROM transcripts t JOIN student s ON t.studentID = s.studentID JOIN courses c ON t.courseID = c.courseID"; //Query
+                        $sql13 = "SELECT t.transcriptID, s.studentName, c.courseName, t.transcript_image FROM transcripts t JOIN student s ON t.studentID = s.studentID JOIN courses c ON t.courseID = c.courseID WHERE t.is_deleted = 0"; //Query
                         $queryTitle13 = "Transcripts Table";
                         $queryDescription13 = "Show All transcript Table Records";
 
@@ -174,7 +174,7 @@
                         WHEN w.status = 1 THEN 'Approved'
                         WHEN w.status = 2 THEN 'Rejected'
                         END AS status
-                        FROM workshop w JOIN student_club sc ON w.studentClubID = sc.studentClubID JOIN teacher t ON w.teacherID = t.teacherID JOIN student s ON w.studentID = s.studentID"; //Query
+                        FROM workshop w JOIN student_club sc ON w.studentClubID = sc.studentClubID JOIN teacher t ON w.teacherID = t.teacherID JOIN student s ON w.studentID = s.studentID WHERE w.is_deleted = 0"; //Query
                         $queryTitle14 = "Workshop Table";
                         $queryDescription14 = "Show All workshop Table Records";
 

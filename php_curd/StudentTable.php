@@ -38,7 +38,7 @@
                                             <th>Cell Number</th>
                                             <th>Emergency Number</th>
                                             <th>Address</th>
-                                            <th>CourseID</th>
+                                            <th>CourseName</th>
                                             <th>Year</th>
 
                                         </tr>
@@ -58,7 +58,12 @@
 
                                             
 
-                                                $sql = "SELECT * FROM student"; //Query
+                                                $sql = "SELECT s.studentID, s.studentName, s.gender, s.dob, c.courseName, s.nationality, s.email, s.password, s.cell_number, s.emergency_number, s.address, s.year, 
+                                                CASE 
+                                                WHEN s.status = 0 THEN 'Active' 
+                                                WHEN s.status = 1 THEN 'Inactive' 
+                                                END AS status
+                                                FROM student s JOIN courses c on s.courseID = c.courseID"; //Query
                                                 //Execute the Query
                                                 $result = mysqli_query($conn, $sql);
                                                 echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -78,7 +83,7 @@
                                                     echo   "<td>".$row['cell_number']. "</td>";
                                                     echo   "<td>".$row['emergency_number']. "</td>";
                                                     echo   "<td>".$row['address']. "</td>";
-                                                    echo   "<td>".$row['courseID']. "</td>";
+                                                    echo   "<td>".$row['courseName']. "</td>";
                                                     echo   "<td>".$row['year']. "</td>";
 
                                                     echo "</tr>";
