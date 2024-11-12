@@ -42,7 +42,18 @@
                                     </thead>
                                     <tbody>
                                 <?php /// Read data
-                                    $sql = "SELECT * FROM exams"; //Query
+                                    $sql = "SELECT e.examID, s.studentName, c.courseName, e.grades, e.exam_datetime, e.year, e.exam_paper, 
+                                    CASE
+                                    WHEN e.student_status = 1 THEN 'First Time'
+                                    WHEN e.student_status = 2 THEN 'Retake'
+                                    END AS studentStatus,
+                                    e.student_seats, e.student_exam_no,
+                                    CASE
+                                    WHEN e.status = 1 THEN 'Upcoming'
+                                    WHEN e.status = 2 THEN 'Ongoing'
+                                    WHEN e.status = 3 THEN 'Finished'
+                                    END AS status
+                                    FROM exams e JOIN student s ON e.studentID = s.studentID JOIN courses c ON e.courseID = c.courseID WHERE e.is_deleted = 0"; //Query
                                     //Execute the Query
                                     $result = mysqli_query($conn, $sql);
                                     echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -53,14 +64,14 @@
                                        
                                         echo "<tr>";
                                                     echo    "<td>".$row['examID']. "</td>";
-                                                    echo    "<td>".$row['studentID']. "</td>";
-                                                    echo    "<td>".$row['courseID']. "</td>";
+                                                    echo    "<td>".$row['studentName']. "</td>";
+                                                    echo    "<td>".$row['courseName']. "</td>";
                                                     echo "<td>".$row["grades"]  ."</td>";
                                                     echo "<td>".$row["exam_datetime"]  ."</td>";
                                                     echo    "<td>".$row['year']. "</td>";
                                                     echo    "<td>".$row['status']. "</td>";
                                                     echo    "<td>".$row['exam_paper']. "</td>";
-                                                    echo "<td>".$row["student_status"]  ."</td>";
+                                                    echo "<td>".$row["studentStatus"]  ."</td>";
                                                     echo "<td>".$row["student_seats"]  ."</td>";
                                                     echo "<td>".$row["student_exam_no"]  ."</td>";
                                                     echo "</tr>";

@@ -37,7 +37,12 @@
                                     </thead>
                                     <tbody>
                                 <?php /// Read data
-                                    $sql = "SELECT * FROM extra_activity"; //Query
+                                    $sql =  "SELECT ex.activityID, ex.activityName, s.studentClubName, t.teacherName, 
+                                    CASE
+                                    WHEN ex.status = 1 THEN 'Active'
+                                    WHEN ex.status = 2 THEN 'Inactive'
+                                    END AS status
+                                    FROM extra_activity ex JOIN student_club s ON ex.studentClubID = s.studentClubID JOIN teacher t ON ex.teacherID = t.teacherID WHERE ex.is_deleted = 0"; //Query
                                     //Execute the Query
                                     $result = mysqli_query($conn, $sql);
                                     echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -49,8 +54,8 @@
                                         echo "<tr>";
                                                     echo    "<td>".$row['activityID']. "</td>";
                                                     echo "<td>".$row["activityName"]  ."</td>";
-                                                    echo "<td>".$row["studentClubID"]  ."</td>";
-                                                    echo    "<td>".$row['teacherID']. "</td>";
+                                                    echo "<td>".$row["studentClubName"]  ."</td>";
+                                                    echo    "<td>".$row['teacherName']. "</td>";
                                                     echo    "<td>".$row['status']. "</td>";
                                                     echo "</tr>";
                                        

@@ -36,7 +36,7 @@
                                     </thead>
                                     <tbody>
                                 <?php /// Read data
-                                    $sql = "SELECT * FROM performance"; //Query
+                                    $sql = "SELECT p.performanceID, s.studentName, c.courseName, p.overallGrades FROM performance p JOIN student s ON p.studentID = s.studentID JOIN courses c ON p.courseID = c.courseID WHERE p.is_deleted = 0"; //Query
                                     //Execute the Query
                                     $result = mysqli_query($conn, $sql);
                                     echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -47,8 +47,8 @@
                                        
                                         echo "<tr>";
                                                     echo    "<td>".$row['performanceID']. "</td>";
-                                                    echo "<td>".$row["studentID"]  ."</td>";
-                                                    echo "<td>".$row["courseID"]  ."</td>";
+                                                    echo "<td>".$row["studentName"]  ."</td>";
+                                                    echo "<td>".$row["courseName"]  ."</td>";
                                                     echo    "<td>".$row['overallGrades']. "</td>";
                                                     echo "</tr>";
                                        

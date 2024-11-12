@@ -49,7 +49,7 @@
 
                                             
 
-                                                $sql = "SELECT * FROM transcripts"; //Query
+                                                $sql = "SELECT t.transcriptID, s.studentName, c.courseName, t.transcript_image FROM transcripts t JOIN student s ON t.studentID = s.studentID JOIN courses c ON t.courseID = c.courseID WHERE t.is_deleted = 0"; //Query
                                                 //Execute the Query
                                                 $result = mysqli_query($conn, $sql);
                                                 echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -60,8 +60,8 @@
                                                     
                                                     echo "<tr>";
                                                     echo "<td>".$row["transcriptID"]  ."</td>";
-                                                    echo    "<td>".$row['studentID']. "</td>";
-                                                    echo   "<td>".$row['courseID']. "</td>";
+                                                    echo    "<td>".$row['studentName']. "</td>";
+                                                    echo   "<td>".$row['courseName']. "</td>";
                                                     echo   "<td>".$row['transcript_image']. "</td>";
                                                     echo "</tr>";
                                                     //echo $row["count(*)"];

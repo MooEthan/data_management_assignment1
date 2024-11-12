@@ -54,7 +54,12 @@
 
                                             
 
-                                                $sql = "SELECT * FROM workshop"; //Query
+                                                $sql ="SELECT w.workshopID, w.workshopName, w.workshop_desc, sc.studentClubName, w.workshopDate, w.workshopTime, t.teacherName, s.studentName,
+                                                CASE 
+                                                WHEN w.status = 1 THEN 'Approved'
+                                                WHEN w.status = 2 THEN 'Rejected'
+                                                END AS status
+                                                FROM workshop w JOIN student_club sc ON w.studentClubID = sc.studentClubID JOIN teacher t ON w.teacherID = t.teacherID JOIN student s ON w.studentID = s.studentID WHERE w.is_deleted = 0"; //Query
                                                 //Execute the Query
                                                 $result = mysqli_query($conn, $sql);
                                                 echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -67,11 +72,11 @@
                                                     echo "<td>".$row["workshopID"]  ."</td>";
                                                     echo    "<td>".$row['workshopName']. "</td>";
                                                     echo   "<td>".$row['workshop_desc']. "</td>";
-                                                    echo   "<td>".$row['studentClubID']. "</td>";
+                                                    echo   "<td>".$row['studentClubName']. "</td>";
                                                     echo   "<td>".$row['workshopDate']. "</td>";
                                                     echo   "<td>".$row['workshopTime']. "</td>";
-                                                    echo   "<td>".$row['teacherID']. "</td>";
-                                                    echo   "<td>".$row['studentID']. "</td>";
+                                                    echo   "<td>".$row['teacherName']. "</td>";
+                                                    echo   "<td>".$row['studentName']. "</td>";
                                                     echo   "<td>".$row['status']. "</td>";
                                                     echo "</tr>";
                                                     //echo $row["count(*)"];

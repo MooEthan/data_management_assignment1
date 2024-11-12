@@ -38,7 +38,7 @@
                                     </thead>
                                     <tbody>
                                 <?php /// Read data
-                                    $sql = "SELECT * FROM certificates"; //Query
+                                    $sql = "SELECT ce.certificateID, s.studentName, co.courseName, ce.cert_image FROM certificates ce JOIN student s ON ce.studentID = s.studentID JOIN courses co ON ce.courseID = co.courseID WHERE ce.is_deleted = 0"; //Query
                                     //Execute the Query
                                     $result = mysqli_query($conn, $sql);
                                     echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -49,8 +49,8 @@
                                        
                                         echo "<tr>";
                                                     echo "<td>".$row["certificateID"]  ."</td>";
-                                                    echo "<td>".$row["studentID"]  ."</td>";
-                                                    echo    "<td>".$row['courseID']. "</td>";
+                                                    echo "<td>".$row["studentName"]  ."</td>";
+                                                    echo    "<td>".$row['courseName']. "</td>";
                                                     echo    "<td>".$row['cert_image']. "</td>";
                                                     echo "</tr>";
                                        

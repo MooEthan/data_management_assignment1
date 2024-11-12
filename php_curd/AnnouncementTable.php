@@ -37,7 +37,7 @@
                                     </thead>
                                     <tbody>
                                 <?php /// Read data
-                                    $sql = "SELECT * FROM announcement"; //Query
+                                    $sql = "SELECT a.announcementID, a.announcementTitle, a.announcementDesc, t.teacherName, s.studentName FROM announcement a JOIN teacher t ON a.teacherID = t.teacherID JOIN student s ON a.studentID = s.studentID WHERE a.is_deleted = 0"; //Query
                                     //Execute the Query
                                     $result = mysqli_query($conn, $sql);
                                     echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -51,8 +51,8 @@
                                                     echo "<td>".$row["announcementID"]  ."</td>";
                                                     echo "<td>".$row["announcementTitle"]  ."</td>";
                                                     echo    "<td>".$row['announcementDesc']. "</td>";
-                                                    echo   "<td>".$row['teacherID']. "</td>";
-                                                    echo   "<td>".$row['studentID']. "</td>";
+                                                    echo   "<td>".$row['teacherName']. "</td>";
+                                                    echo   "<td>".$row['studentName']. "</td>";
                                                     echo "</tr>";
                                         //echo $row["count(*)"];
                                     }

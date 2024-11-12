@@ -51,7 +51,7 @@
 
                                             
 
-                                                $sql = "SELECT * FROM student_club"; //Query
+                                                $sql =  "SELECT sc.studentClubID, sc.studentClubName, s.studentName, t.teacherName, sc.studentClubDesc FROM student_club sc JOIN student s ON sc.studentID = s.studentID JOIN teacher t ON sc.teacherID = t.teacherID WHERE sc.is_deleted = 0"; //Query
                                                 //Execute the Query
                                                 $result = mysqli_query($conn, $sql);
                                                 echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -63,8 +63,8 @@
                                                     echo "<tr>";
                                                     echo "<td>".$row["studentClubID"]  ."</td>";
                                                     echo    "<td>".$row['studentClubName']. "</td>";
-                                                    echo   "<td>".$row['studentID']. "</td>";
-                                                    echo   "<td>".$row['teacherID']. "</td>";
+                                                    echo   "<td>".$row['studentName']. "</td>";
+                                                    echo   "<td>".$row['teacherName']. "</td>";
                                                     echo   "<td>".$row['studentClubDesc']. "</td>";
 
                                                     echo "</tr>";

@@ -43,7 +43,18 @@
                                     </thead>
                                     <tbody>
                                 <?php /// Read data
-                                    $sql = "SELECT * FROM assignment"; //Query
+                                    $sql = "SELECT a.assignmentID, a.assignmentRemark, s.studentName, c.courseName, a.assignmentName, a.grades,a.assignmentDoc,
+                                    CASE
+                                    WHEN a.submission = 1 THEN 'Pending'
+                                    WHEN a.submission = 2 THEN 'Received'
+                                    WHEN a.submission = 3 THEN 'Rejected'
+                                    END AS submission,
+                                    CASE
+                                    WHEN a.status = 1 THEN 'Pending'
+                                    WHEN a.status = 2 THEN 'Approved'
+                                    WHEN a.status = 3 THEN 'Rejected'
+                                    END AS status
+                                    FROM assignment a JOIN student s ON a.studentID = s.studentID JOIN courses c ON a.courseID = c.courseID WHERE a.is_deleted = 0"; //Query
                                     //Execute the Query
                                     $result = mysqli_query($conn, $sql);
                                     echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -55,8 +66,8 @@
                                         echo "<tr>";
                                         echo "<td>".$row["assignmentID"]  ."</td>";
                                         echo "<td>".$row["assignmentRemark"]  ."</td>";
-                                        echo "<td>".$row['studentID']. "</td>";
-                                        echo "<td>".$row['courseID']. "</td>";
+                                        echo "<td>".$row['studentName']. "</td>";
+                                        echo "<td>".$row['courseName']. "</td>";
                                         echo "<td>".$row['assignmentName']. "</td>";
                                         echo "<td>".$row['grades']. "</td>";
                                         echo "<td>".$row['status']. "</td>";

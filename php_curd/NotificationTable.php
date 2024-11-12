@@ -38,7 +38,7 @@
                                     </thead>
                                     <tbody>
                                 <?php /// Read data
-                                    $sql = "SELECT * FROM class_time_notification"; //Query
+                                    $sql = "SELECT n.notificationID, c.courseName, n.notificationName, n.notificationDetail, n.timeOfNextClass, n.dateOfNextClass FROM class_time_notification n JOIN courses c ON n.courseID = c.courseID WHERE n.is_deleted = 0"; //Query
                                     //Execute the Query
                                     $result = mysqli_query($conn, $sql);
                                     echo "<br> Total Rows: " . mysqli_num_rows($result);
@@ -49,11 +49,11 @@
                                        
                                         echo "<tr>";
                                                     echo "<td>".$row["notificationID"]  ."</td>";
-                                                    echo    "<td>".$row['courseID']. "</td>";
+                                                    echo    "<td>".$row['courseName']. "</td>";
                                                     echo "<td>".$row["notificationName"]  ."</td>";
                                                     echo    "<td>".$row['notificationDetail']. "</td>";
                                                     echo    "<td>".$row['timeOfNextClass']. "</td>";
-                                                    echo    "<td>".$row['dateofNextClass']. "</td>";
+                                                    echo    "<td>".$row['dateOfNextClass']. "</td>";
                                                     echo "</tr>";
                                        
                                     }
